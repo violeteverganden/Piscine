@@ -1,0 +1,30 @@
+tail
+	read from std input.
+	once ctrl+d is pressed, display all characters from first.
+
+tail (filenames)
+	display content of each file from the end up to 10 lines.
+
+tail -c (string contains only number)
+	read from std input.
+	once ctrl+d is pressed, display n characters from end.
+	if n equals 0, nothing should be displayed.
+
+tail -c (string contains not number)
+	display
+		tail: illegal offset -- (not number)
+	use basename function and errno
+
+tail -c (number) (filenames)
+	display content of each file from the end up to n bytes.
+
+	for each filename that is not in current directory, display
+		tail: (filename): No such file or directory
+	this error occurs when function read returns -1.
+
+	if multiple files are given as argument, display
+	==> (first filename) <==
+	content of n bytes
+	(new line)
+	==> (last filename) <==
+	content of n bytes
