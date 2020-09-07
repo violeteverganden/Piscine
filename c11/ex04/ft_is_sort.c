@@ -6,23 +6,11 @@
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 14:57:19 by diwata            #+#    #+#             */
-/*   Updated: 2020/08/26 21:01:09 by diwata           ###   ########.fr       */
+/*   Updated: 2020/09/07 09:48:32 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
-int	ft_is_ascendant(int *tab, int length, int (*f)(int, int))
-{
-	while (length > 1 && f(tab[0], tab[1]) <= 0)
-	{
-		tab++;
-		length--;
-	}
-	if (length == 1)
-		return (1);
-	return (0);
-}
 
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
