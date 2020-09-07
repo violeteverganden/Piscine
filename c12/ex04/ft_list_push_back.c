@@ -6,7 +6,7 @@
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 09:21:21 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/02 20:41:15 by diwata           ###   ########.fr       */
+/*   Updated: 2020/09/06 13:24:34 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_list_push_back(t_list **begin_list, void *data)
 {
 	t_list	*elem;
-	t_list	*tmp;
+	t_list	*last;
 
 	elem = ft_create_elem(data);
 	if (!*begin_list)
@@ -23,8 +23,8 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 		*begin_list = elem;
 		return ;
 	}
-	tmp = *begin_list;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = elem;
+	last = *begin_list;
+	while (last->next)
+		last = last->next;
+	last->next = elem;
 }

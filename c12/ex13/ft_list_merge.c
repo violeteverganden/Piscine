@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_list_merge.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 09:35:24 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/06 09:51:45 by diwata           ###   ########.fr       */
+/*   Created: 2020/09/05 12:27:15 by diwata            #+#    #+#             */
+/*   Updated: 2020/09/05 13:01:50 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_push_strs(int size, char **strs)
+void	ft_list_merge(t_list **begin_list1, t_list *begin_list2)
 {
-	t_list	*prev;
-	t_list	*curr;
+	t_list	*temp;
 
-	if (size <= 0)
-		return (NULL);
-	prev = NULL;
-	while (size--)
+	if (!begin_list1 || !begin_list2)
+		return ;
+	if (!*begin_list1)
 	{
-		curr = ft_create_elem(*strs++);
-		curr->next = prev;
-		prev = curr;
+		*begin_list1 = begin_list2;
+		return ;
 	}
-	return (curr);
+	temp = *begin_list1;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = begin_list2;
 }

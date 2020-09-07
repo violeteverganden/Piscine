@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 09:35:24 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/06 09:51:45 by diwata           ###   ########.fr       */
+/*   Created: 2020/09/01 21:07:11 by diwata            #+#    #+#             */
+/*   Updated: 2020/09/02 09:33:43 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_push_strs(int size, char **strs)
+void	ft_list_push_front(t_list **begin_list, void *data)
 {
-	t_list	*prev;
-	t_list	*curr;
+	t_list	*elem;
 
-	if (size <= 0)
-		return (NULL);
-	prev = NULL;
-	while (size--)
+	elem = ft_create_elem(data);
+	if (!*begin_list)
 	{
-		curr = ft_create_elem(*strs++);
-		curr->next = prev;
-		prev = curr;
+		*begin_list = elem;
+		return ;
 	}
-	return (curr);
+	elem->next = *begin_list;
+	*begin_list = elem;
 }

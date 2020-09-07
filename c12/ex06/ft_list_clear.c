@@ -6,7 +6,7 @@
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 10:27:33 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/04 13:09:04 by diwata           ###   ########.fr       */
+/*   Updated: 2020/09/05 10:34:45 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 {
-	t_list	*temp;
+	t_list	*curr;
+	t_list	*next;
 
-	while (begin_list)
+	curr = begin_list;
+	while (curr)
 	{
-		free_fct((begin_list->data));
-		printf("data : %p\n", begin_list->data);
-		temp = begin_list;
-		free(temp);
-		printf("elem : %p\n", temp);
-		begin_list = begin_list->next;
+		free_fct(curr->data);
+		next = curr->next;
+		curr->next = NULL;
+		free(curr);
+		curr = next;
 	}
 }
