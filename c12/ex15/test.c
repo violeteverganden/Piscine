@@ -6,43 +6,30 @@
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 09:48:59 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/09 11:10:40 by diwata           ###   ########.fr       */
+/*   Updated: 2020/09/09 18:03:56 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-int		ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 || *s2)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-	}
-	return (0);
-}
-
-void	display_sorted(int ac, t_list *first)
+void	display_rev_list(int ac, t_list *first)
 {
 	int		i;
 
-	printf("After sorted\n");
+	printf("After reverse\n");
 	i = 0;
 	while (i < ac)
 	{
-		printf("%dth data : %s\n", i++, first->data);
+		printf("%dth : %s\n", i++, first->data);
 		first = first->next;
 	}
-	printf("%dth addr : %p\n", i, first);
 }
 
 void	display_original(int ac, char **av)
 {
-	int i;
+	int		i;
 
-	printf("Before sort\n");
+	printf("Before reverse\n");
 	i = 0;
 	while (i <= ac)
 	{
@@ -55,9 +42,11 @@ int		main(int ac, char **av)
 {
 	t_list	*first;
 
-	display_original(ac - 1, av + 1);
+	ac--;
+	av++;
+	display_original(ac, av);
 	putchar('\n');
-	first = ft_list_push_strs_back(ac - 1, av + 1);
-	ft_list_sort(&first, &ft_strcmp);
-	display_sorted(ac - 1, first);
+	first = ft_list_push_strs_back(ac, av);
+	ft_list_reverse_fun(first);
+	display_rev_list(ac, first);
 }

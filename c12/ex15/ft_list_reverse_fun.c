@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/06 07:27:50 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/09 10:50:11 by diwata           ###   ########.fr       */
+/*   Created: 2020/09/09 11:28:55 by diwata            #+#    #+#             */
+/*   Updated: 2020/09/09 18:03:13 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_sort(t_list **begin_list, int (*cmp)())
+void	ft_list_reverse_fun(t_list *begin_list)
 {
-	t_list	*begin_sort;
-	t_list	*obje;
-	void	*temp;
+	int		size;
+	int		count;
+	t_list	*temp;
+	t_list	*curr;
 
-	if (!begin_list || !*begin_list || !(*begin_list)->next)
+	if (!begin_list)
 		return ;
-	begin_sort = *begin_list;
-	while (begin_sort->next)
+	size = 1;
+	temp = begin_list;
+	while ((temp = temp->next))
+		size++;
+	while (--size)
 	{
-		obje = begin_sort;
-		while (obje)
+		count = 0;
+		curr = begin_list;
+		while (count++ < size)
 		{
-			if (cmp(begin_sort->data, obje->data) > 0)
-			{
-				temp = begin_sort->data;
-				begin_sort->data = obje->data;
-				obje->data = temp;
-			}
-			obje = obje->next;
+			temp = curr->data;
+			curr->data = curr->next->data;
+			curr->next->data = temp;
+			curr = curr->next;
 		}
-		begin_sort = begin_sort->next;
 	}
 }

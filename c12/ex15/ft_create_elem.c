@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs_back.c                           :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diwata <diwata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 09:35:24 by diwata            #+#    #+#             */
-/*   Updated: 2020/09/09 11:09:59 by diwata           ###   ########.fr       */
+/*   Created: 2020/09/01 09:59:20 by diwata            #+#    #+#             */
+/*   Updated: 2020/09/01 22:13:31 by diwata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_push_strs_back(int size, char **strs)
+t_list	*ft_create_elem(void *data)
 {
-	t_list	*begin_list;
-	t_list	*curr;
-	t_list	*last;
+	t_list	*elem;
 
-	if (size <= 0 || !strs)
-		return (NULL);
-	begin_list = ft_create_elem(*strs++);
-	if (size == 1)
-		return (begin_list);
-	curr = begin_list;
-	last = curr->next;
-	while (--size)
-	{
-		last = ft_create_elem(*strs++);
-		curr->next = last;
-		curr = last;
-	}
-	return (begin_list);
+	elem = malloc(sizeof(t_list));
+	elem->data = data;
+	elem->next = NULL;
+	return (elem);
 }
