@@ -1,0 +1,6 @@
+[x] create two lists
+[x] sort lists
+[x] merge lists
+- [x] set next of the last elem of list1 to the first elem of list2, then sort the whole list
+- [ ] insert each elem of list2 using ft_sorted_list_insert
+[x] sort merged list

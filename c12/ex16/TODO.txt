@@ -1,0 +1,5 @@
+[x] create list
+[x] sort list
+[x] insert data into list so that it remains sorted
+- [x] stick new elem with the beginning then sort whole list
+- [ ] search through list comparing data to find the appropriate position
