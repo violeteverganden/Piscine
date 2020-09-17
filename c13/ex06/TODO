@@ -1,0 +1,2 @@
+[x] recursively find number of branch of both left and right subtree and take the bigger one
+	if specific subtree has maximum number of nodes n, number of branch under that subtree is n - 1

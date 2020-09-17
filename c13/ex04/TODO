@@ -1,0 +1,5 @@
+[x] create btree
+[x] create btree_insert_data which create new node and insert it
+	[x] use prefix traversal and find the approptiate position
+	 -  if new item is lower than root item, go to left subtree
+	 -  else, go to right subtree

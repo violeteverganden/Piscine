@@ -1,0 +1,4 @@
+[x] create btree
+[x] serach through btree using infix traversal to find data given as argument
+	[x] implement infix traversal
+		if data_ref is found in tree, return that value
