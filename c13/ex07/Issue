@@ -1,0 +1,5 @@
+implement breadth first search
+	create queue starting from root
+		array
+		linked list
+			make list of each node and reagrd it as queue
